@@ -20,12 +20,12 @@
   const TINTS = ["255,255,255", "255,255,255", "255,255,255", "200,235,255", "220,210,255"];
 
   function buildStars() {
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W * DPR; canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
-    const total = Math.round(Math.min(1400, (W * H) / (W < 768 ? 1100 : 1300)));
+    const total = Math.round(Math.min(900, (W * H) / (W < 768 ? 1500 : 1700)));
     stars = [];
     LAYERS.forEach((L, li) => {
       const n = Math.round(total * L.share);
@@ -47,7 +47,24 @@
         });
       }
     });
+    // group by tint so fillStyle only changes a few times per frame
+    stars.sort((a, b) => (a.tint < b.tint ? -1 : a.tint > b.tint ? 1 : 0));
   }
+
+  // Pre-rendered soft star sprites (one per tint): drawImage is far cheaper than arc()+fill() per star
+  const SPRITES = {};
+  [...new Set(TINTS)].forEach((tint) => {
+    const c = document.createElement("canvas"), S = 32;
+    c.width = c.height = S;
+    const g = c.getContext("2d");
+    const grad = g.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+    grad.addColorStop(0, `rgba(${tint},1)`);
+    grad.addColorStop(0.22, `rgba(${tint},0.95)`);
+    grad.addColorStop(0.32, `rgba(${tint},0.25)`);
+    grad.addColorStop(1, `rgba(${tint},0)`);
+    g.fillStyle = grad; g.fillRect(0, 0, S, S);
+    SPRITES[tint] = c;
+  });
 
   function spawnShooter() {
     const fromLeft = Math.random() < 0.5;
@@ -64,32 +81,36 @@
 
   function wrap(v, max) { return ((v % max) + max) % max; }
 
-  function frame() {
+  let last = performance.now();
+  function frame(now) {
+    // time-based motion: same speed at 60Hz or 144Hz, and no lurch after a slow frame
+    const k = Math.min((now - last) / 16.667, 3);
+    last = now;
     ctx.clearRect(0, 0, W, H);
-    parX += (mouseX - parX) * 0.05;
-    parY += (mouseY - parY) * 0.05;
+    parX += (mouseX - parX) * 0.05 * k;
+    parY += (mouseY - parY) * 0.05 * k;
 
+    let tint = null;
     for (const s of stars) {
       const L = LAYERS[s.layer];
-      s.x += s.vx; s.y += s.vy; s.tw += s.tws;
+      s.x += s.vx * k; s.y += s.vy * k; s.tw += s.tws * k;
       const x = wrap(s.x - parX * L.depth * 30, W);
       const y = wrap(s.y - parY * L.depth * 30 - scrollY * L.depth * 0.35, H);
-      const alpha = s.a * (0.6 + 0.4 * Math.sin(s.tw));
-      ctx.fillStyle = `rgba(${s.tint},${alpha})`;
-      ctx.beginPath();
-      ctx.arc(x, y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-      if (s.layer === 2 && alpha > 0.7) {
-        ctx.fillStyle = `rgba(${s.tint},${(alpha - 0.7) * 0.25})`;
-        ctx.beginPath();
-        ctx.arc(x, y, s.r * 4, 0, Math.PI * 2);
-        ctx.fill();
+      ctx.globalAlpha = s.a * (0.6 + 0.4 * Math.sin(s.tw));
+      if (s.r < 1.1) {
+        if (s.tint !== tint) { tint = s.tint; ctx.fillStyle = `rgb(${tint})`; }
+        const d = s.r * 2;
+        ctx.fillRect(x - s.r, y - s.r, d, d);
+      } else {
+        const d = s.r * 6.5; // sprite core ≈ star size, outer falloff = glow
+        ctx.drawImage(SPRITES[s.tint], x - d / 2, y - d / 2, d, d);
       }
     }
+    ctx.globalAlpha = 1;
 
     for (let i = shooters.length - 1; i >= 0; i--) {
       const sh = shooters[i];
-      sh.x += sh.vx; sh.y += sh.vy; sh.life++;
+      sh.x += sh.vx * k; sh.y += sh.vy * k; sh.life += k;
       const t = sh.life / sh.max;
       const fade = t < 0.2 ? t / 0.2 : 1 - (t - 0.2) / 0.8;
       const tx = sh.x - sh.vx * 9, ty = sh.y - sh.vy * 9;

@@ -76,6 +76,7 @@ ul, ol { list-style: none; }
     radial-gradient(35% 30% at 80% 70%, rgba(167, 139, 250, 0.08), transparent 70%),
     radial-gradient(25% 20% at 60% 15%, rgba(96, 165, 250, 0.05), transparent 70%);
   animation: drift 40s ease-in-out infinite alternate;
+  will-change: transform;
 }
 @keyframes drift { to { transform: translate3d(4%, -3%, 0) rotate(4deg); } }
 
@@ -106,11 +107,10 @@ body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   border-bottom: 1px solid transparent;
-  transition: background .4s, border-color .4s, backdrop-filter .4s;
+  transition: background .4s, border-color .4s;
 }
 .nav.scrolled {
-  background: rgba(5, 5, 8, 0.6);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  background: rgba(5, 6, 10, 0.88);
   border-bottom-color: var(--line);
 }
 .nav__inner { display: flex; align-items: center; justify-content: flex-end; height: 76px; gap: 40px; }
@@ -171,7 +171,7 @@ body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
 .btn--sm { padding: 9px 22px; font-size: .92rem; }
 .btn--light { background: #fff; color: #000; }
 .btn--light:hover { background: #e7e9ee; box-shadow: 0 10px 40px rgba(255,255,255,.18); }
-.btn--ghost { border: 1px solid var(--line-2); background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.btn--ghost { border: 1px solid var(--line-2); background: rgba(16, 18, 26, 0.75); }
 .btn--ghost:hover { border-color: rgba(255,255,255,.35); background: var(--glass-2); transform: translateY(-3px); }
 
 /* ---------- Hero ---------- */
@@ -237,8 +237,9 @@ body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
 /* Cards */
 .card {
   position: relative; border-radius: var(--radius); padding: 30px;
-  background: var(--glass); border: 1px solid var(--line);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  /* Solid tinted glass instead of backdrop blur: blurring the live starfield every frame is very expensive (worst in Firefox) */
+  background: linear-gradient(160deg, rgba(22, 25, 36, 0.78), rgba(10, 12, 18, 0.78));
+  border: 1px solid var(--line);
   transition: transform .5s var(--ease), border-color .4s, box-shadow .4s, background .4s;
 }
 .card::before { /* cursor spotlight */
@@ -485,7 +486,7 @@ body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
 .contact__loc { display: inline-flex; align-items: center; gap: 8px; margin-top: 40px; color: var(--fg-3); font-size: .9rem; }
 
 /* ---------- Footer ---------- */
-.footer { border-top: 1px solid var(--line); background: rgba(5,5,8,.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.footer { border-top: 1px solid var(--line); background: rgba(5, 6, 10, 0.9); }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 28px; padding-bottom: 28px; flex-wrap: wrap; }
 .footer p { color: var(--fg-3); font-size: .9rem; }
 .footer__links { display: flex; gap: 24px; }
