@@ -14,7 +14,9 @@
   <meta property="og:description" content="Georgia Tech M.S. Cybersecurity candidate: SOC operations, AI agent security, detection engineering." />
   <meta property="og:image" content="https://mpowell40.github.io/mekhel-powell.jpg" />
 
-  <link rel="icon" type="image/svg+xml" href="star.svg" />
+  <link rel="icon" type="image/svg+xml" href="rocket.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="rocket-32.png" />
+  <link rel="apple-touch-icon" href="rocket-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
@@ -53,7 +55,6 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
       </nav>
       <a href="#contact" class="btn btn--light btn--sm nav__cta">Contact</a>
       <button class="nav__toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -66,7 +67,6 @@
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -75,7 +75,6 @@
     <button data-target="about" title="About"></button>
     <button data-target="experience" title="Experience"></button>
     <button data-target="projects" title="Projects"></button>
-    <button data-target="skills" title="Skills"></button>
     <button data-target="contact" title="Contact"></button>
   </div>
 
@@ -343,71 +342,10 @@
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section">
-      <div class="container">
-        <header class="section__head">
-          <p class="eyebrow reveal">04 &middot; Skills</p>
-          <h2 class="h2 reveal">My <span class="grad">toolkit</span></h2>
-        </header>
-        <div class="card toolkit reveal">
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
-              <h3>SIEM &amp; Log Analysis</h3>
-            </div>
-            <div class="tags tags--lg"><span>Wazuh SIEM</span><span>Splunk (SPL)</span><span>Elastic Stack (ELK)</span><span>KQL</span><span>Wireshark</span><span>Custom XML detection rules</span><span>GeoIP enrichment</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon toolkit__icon--violet" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-              <h3>Endpoint Detection &amp; Response</h3>
-            </div>
-            <div class="tags tags--lg"><span>SentinelOne Singularity XDR</span><span>Red Canary</span><span>Alert triage &amp; escalation</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
-              <h3>Frameworks &amp; Compliance</h3>
-            </div>
-            <div class="tags tags--lg"><span>MITRE ATT&amp;CK</span><span>CIS Benchmarks</span><span>CMMC</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
-              <h3>Analysis &amp; Reverse Engineering</h3>
-            </div>
-            <div class="tags tags--lg"><span>Ghidra</span><span>Malware &amp; threat analysis</span><span>Fuzzing</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19h11.5z"/></svg></span>
-              <h3>Cloud &amp; Infrastructure</h3>
-            </div>
-            <div class="tags tags--lg"><span>AWS EC2</span><span>Docker</span><span>VMware</span><span>iptables</span><span>mTLS</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon toolkit__icon--violet" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
-              <h3>Scripting &amp; Automation</h3>
-            </div>
-            <div class="tags tags--lg"><span>Python</span><span>PowerShell</span><span>C / C++</span><span>Java</span><span>React</span><span>Power Automate</span><span>Power BI</span></div>
-          </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2-3 2M11 12h4"/></svg></span>
-              <h3>Operating Systems</h3>
-            </div>
-            <div class="tags tags--lg"><span>Kali Linux</span><span>Ubuntu</span><span>Debian</span><span>Windows Server</span><span>Windows Enterprise</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact -->
     <section id="contact" class="section contact">
       <div class="container contact__inner">
-        <p class="eyebrow reveal">05 &middot; Contact</p>
+        <p class="eyebrow reveal">04 &middot; Contact</p>
         <h2 class="h2 h2--xl reveal">Let's <span class="serif">connect</span></h2>
         <p class="contact__lede reveal">
           I'm looking for full-time roles in security operations, detection engineering, and security research
