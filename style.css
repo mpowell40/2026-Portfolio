@@ -492,9 +492,14 @@ body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
   left: max(16px, calc(50% - 760px)); top: 50%; transform: translateY(-50%);
   width: clamp(240px, 24vw, 360px); aspect-ratio: 3 / 4;
 }
-.glass-rocket canvas { width: 100% !important; height: 100% !important; display: block; }
+.glass-astronaut {
+  position: absolute; z-index: 1; pointer-events: none;
+  right: max(16px, calc(50% - 760px)); top: 50%; transform: translateY(-50%);
+  width: clamp(240px, 24vw, 360px); aspect-ratio: 3 / 4;
+}
+.glass-rocket canvas, .glass-astronaut canvas { width: 100% !important; height: 100% !important; display: block; }
 .contact__inner { position: relative; z-index: 2; }
-@media (max-width: 1100px) { .glass-rocket { display: none; } }
+@media (max-width: 1100px) { .glass-rocket, .glass-astronaut { display: none; } }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--line); background: rgba(5, 6, 10, 0.9); }
