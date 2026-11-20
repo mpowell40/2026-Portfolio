@@ -2,7 +2,7 @@
 
 Personal site for Mekhel Powell, M.S. Cybersecurity candidate at Georgia Tech (Dec 2026).
 
-Live: https://mpowell40.github.io/
+Live: https://mpowell40.github.io/2026-Portfolio/
 
 ## Stack
 
@@ -22,4 +22,4 @@ Then open http://localhost:8000.
 
 ## Deploy
 
-Push to a GitHub repo named `mpowell40.github.io`, then in **Settings → Pages** set the source to the `main` branch, root folder.
+Push to the `2026-Portfolio` repo, then in **Settings → Pages** set the source to the `main` branch, root folder.

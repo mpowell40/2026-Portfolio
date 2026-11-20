@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mpowell40.github.io/sitemap.xml
+Sitemap: https://mpowell40.github.io/2026-Portfolio/sitemap.xml
