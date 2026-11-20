@@ -49,9 +49,6 @@
   <!-- Navigation -->
   <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="#home" class="nav__logo" aria-label="Back to top">
-        <span class="logo-star" aria-hidden="true"></span>MP
-      </a>
       <nav class="nav__links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -101,9 +98,9 @@
           <span class="typed" id="typed" aria-live="polite">Security Operations Analyst</span><span class="caret" aria-hidden="true"></span>
         </p>
         <p class="hero__lede reveal-load" style="--d:.45s">
-          Georgia Tech M.S. Cybersecurity candidate with enterprise SOC experience triaging endpoint
-          alerts in SentinelOne XDR and Red Canary. I build hands-on security tooling, from a policy-enforcement
-          proxy for AI agent tool calls to a cloud honeypot feeding 90,000+ attack events into a Wazuh SIEM.
+          I've always been drawn to how networks work, and that curiosity turned into a passion for keeping them
+          secure. I'm finishing my M.S. in Cybersecurity at Georgia Tech, with hands-on experience in an enterprise
+          SOC and a habit of building my own security tools to learn how attacks really happen.
         </p>
         <div class="hero__actions reveal-load" style="--d:.6s">
           <a href="#projects" class="btn btn--light magnetic">View Projects</a>
@@ -137,7 +134,7 @@
           </div>
 
           <div class="stats reveal">
-            <div class="stat"><span class="stat__num" data-count="90000" data-suffix="+">0</span><span class="stat__label">Attack events captured &amp; analyzed</span></div>
+            <div class="stat"><span class="stat__num" data-count="10" data-suffix="+">0</span><span class="stat__label">Security tools &amp; platforms used hands-on</span></div>
             <div class="stat"><span class="stat__num" data-count="130" data-suffix="+">0</span><span class="stat__label">Students mentored in STEM &amp; CS</span></div>
             <div class="stat"><span class="stat__num" data-count="3.71" data-decimals="2">0</span><span class="stat__label">Graduate GPA at Georgia Tech</span></div>
           </div>
@@ -292,22 +289,36 @@
           </div>
         </article>
 
-        <!-- Policy research -->
-        <h3 class="subhead reveal">Policy &amp; privacy research</h3>
-        <div class="grid-2">
-          <article class="card project-sm reveal tilt">
-            <span class="pill pill--cyan">Policy &amp; Compliance</span>
-            <h4 class="h4">Rebuilding Georgia's Breach Statute</h4>
-            <p class="muted">Evaluated state breach-notification law against modern ransomware and biometric threats, and proposed a hybrid model with NIST CSF safe harbors and faster disclosure timelines.</p>
-            <a class="link-arrow" href="georgia-data-breach-policy.pdf" target="_blank" rel="noopener">Read the memo (PDF) <span aria-hidden="true">&rarr;</span></a>
-          </article>
-          <article class="card project-sm reveal tilt">
-            <span class="pill pill--violet">Privacy by Design</span>
-            <h4 class="h4">Privacy-Preserving Age Assurance</h4>
-            <p class="muted">Analyzed constitutional, surveillance, and digital-divide risks in mandatory online age verification, and designed a pilot framework built on cryptographic tokens and zero data retention.</p>
-            <a class="link-arrow" href="age-assurance-policy.pdf" target="_blank" rel="noopener">Read the proposal (PDF) <span aria-hidden="true">&rarr;</span></a>
-          </article>
-        </div>
+        <!-- Featured: Phishing detection -->
+        <article class="project project--feature card reveal tilt">
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="pill pill--blue">Machine Learning &amp; Threat Detection</span>
+            </div>
+            <h3 class="h3 h3--lg">ML Phishing Detection System</h3>
+            <p class="project__context">Independent Project</p>
+            <ul class="bullets">
+              <li>Built an end-to-end phishing detector that analyzes suspicious email and SMS text and embedded URLs at the same time, returning a confidence score and a Safe / Medium / High triage rating.</li>
+              <li>Trained two models: a TF-IDF + Logistic Regression text classifier that reached 98.42% accuracy on a 15,023-message validation set, and an XGBoost model for URL features.</li>
+              <li>Served both models through a Flask REST API and built a React dashboard styled like a SOC console for submitting samples and reviewing verdicts.</li>
+            </ul>
+            <div class="tags"><span>Python</span><span>Scikit-learn</span><span>XGBoost</span><span>TF-IDF / NLP</span><span>Flask</span><span>React</span></div>
+            <a class="link-arrow" href="https://github.com/mpowell40/phishing-detection-system" target="_blank" rel="noopener">View code on GitHub <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="project__visual" aria-hidden="true">
+            <div class="scan">
+              <div class="scan__head"><span class="mono">analysis</span><span class="scan__badge">High risk</span></div>
+              <div class="scan__sample">
+                <p class="mono scan__from">From: security@paypa1-support.com</p>
+                <p>Your account has been <mark>suspended</mark>. <mark>Verify now</mark> to avoid permanent closure:</p>
+                <p class="mono scan__url">http://paypa1-verify.co/login</p>
+                <span class="scan__beam"></span>
+              </div>
+              <div class="scan__row"><span>Email text</span><div class="meter"><span style="--w:96%"></span></div><b>0.96</b></div>
+              <div class="scan__row"><span>URL</span><div class="meter"><span style="--w:88%"></span></div><b>0.88</b></div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -318,33 +329,41 @@
           <p class="eyebrow reveal">04 &middot; Skills</p>
           <h2 class="h2 reveal">My <span class="grad">toolkit</span></h2>
         </header>
-        <div class="grid-3">
-          <div class="card skill-card reveal">
-            <div class="skill-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div class="card toolkit reveal">
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <h3>Security &amp; Detection</h3>
             </div>
-            <h3 class="h4">Security Tools &amp; Platforms</h3>
-            <div class="tags tags--lg">
-              <span>SentinelOne Singularity XDR</span><span>Red Canary</span><span>Wazuh SIEM</span><span>MITRE ATT&amp;CK</span><span>Wireshark</span><span>Ghidra</span><span>Docker</span><span>VMware</span><span>AWS EC2</span><span>Power BI</span><span>Power Automate</span>
-            </div>
+            <div class="tags tags--lg"><span>SentinelOne Singularity XDR</span><span>Red Canary</span><span>Wazuh SIEM</span><span>MITRE ATT&amp;CK</span><span>Wireshark</span><span>Ghidra</span></div>
           </div>
-          <div class="card skill-card reveal">
-            <div class="skill-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19h11.5z"/></svg></span>
+              <h3>Cloud &amp; Infrastructure</h3>
             </div>
-            <h3 class="h4">Programming &amp; Scripting</h3>
-            <div class="tags tags--lg">
-              <span>Python</span><span>C / C++</span><span>PowerShell</span><span>Java</span><span>React</span>
-            </div>
+            <div class="tags tags--lg"><span>AWS EC2</span><span>Docker</span><span>VMware</span></div>
           </div>
-          <div class="card skill-card reveal">
-            <div class="skill-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2-3 2M11 12h4"/></svg>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon toolkit__icon--violet" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
+              <h3>Programming &amp; Scripting</h3>
             </div>
-            <h3 class="h4">Operating Systems</h3>
-            <div class="tags tags--lg">
-              <span>Kali Linux</span><span>Ubuntu</span><span>Debian</span><span>Windows Server</span><span>Windows Enterprise</span>
+            <div class="tags tags--lg"><span>Python</span><span>C / C++</span><span>PowerShell</span><span>Java</span><span>React</span></div>
+          </div>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2-3 2M11 12h4"/></svg></span>
+              <h3>Operating Systems</h3>
             </div>
+            <div class="tags tags--lg"><span>Kali Linux</span><span>Ubuntu</span><span>Debian</span><span>Windows Server</span><span>Windows Enterprise</span></div>
+          </div>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+              <h3>Automation &amp; Reporting</h3>
+            </div>
+            <div class="tags tags--lg"><span>Power BI</span><span>Power Automate</span></div>
           </div>
         </div>
       </div>
@@ -358,33 +377,33 @@
           <h2 class="h2 reveal">Education &amp; <span class="grad">certifications</span></h2>
         </header>
 
-        <div class="grid-3 edu">
-          <article class="card edu-card reveal">
-            <span class="date">Expected Dec 2026</span>
-            <h3 class="h4">Georgia Institute of Technology</h3>
-            <p class="org">M.S. Cybersecurity, Cybersecurity &amp; Privacy</p>
-            <p class="gpa"><span class="mono">GPA</span> 3.71</p>
+        <div class="edu">
+          <article class="card edu-card reveal tilt">
+            <div class="edu-card__logo"><img src="gt-logo.svg" alt="Georgia Tech logo" width="157" height="69" loading="lazy" /></div>
+            <div class="edu-card__body">
+              <span class="date">Expected Dec 2026</span>
+              <h3 class="h3">Georgia Institute of Technology</h3>
+              <p class="org">M.S. Cybersecurity, Cybersecurity &amp; Privacy track</p>
+              <p class="gpa"><span class="mono">GPA</span> 3.71</p>
+            </div>
           </article>
-          <article class="card edu-card reveal">
-            <span class="date">Fall 2021 – Summer 2025</span>
-            <h3 class="h4">Georgia State University</h3>
-            <p class="org">B.S. Computer Science, Honors College</p>
-            <p class="gpa"><span class="mono">GPA</span> 3.72</p>
+          <article class="card edu-card reveal tilt">
+            <div class="edu-card__logo"><img src="gsu-logo.svg" alt="Georgia State University logo" width="716" height="584" loading="lazy" /></div>
+            <div class="edu-card__body">
+              <span class="date">Fall 2021 – Summer 2025</span>
+              <h3 class="h3">Georgia State University</h3>
+              <p class="org">B.S. Computer Science, Honors College</p>
+              <p class="gpa"><span class="mono">GPA</span> 3.72</p>
+            </div>
           </article>
           <article class="card edu-card edu-card--cert reveal">
-            <span class="date">Expected Jan 2027</span>
-            <h3 class="h4">CompTIA Security+</h3>
-            <p class="org">SY0-701 &middot; In progress</p>
+            <div class="edu-card__body">
+              <span class="date">Expected Jan 2027</span>
+              <h3 class="h3">CompTIA Security+ <span class="cert-code mono">SY0-701</span></h3>
+              <p class="org">Certification in progress</p>
+            </div>
             <div class="progress" aria-hidden="true"><span></span></div>
           </article>
-        </div>
-
-        <h3 class="subhead reveal">Relevant coursework</h3>
-        <div class="grid-2 courses">
-          <div class="course reveal"><h4>Information Security Lab</h4><p>Malware &amp; threat analysis, software security (fuzzing / SRE), web &amp; mobile security</p></div>
-          <div class="course reveal"><h4>Secure Computer Systems</h4><p>Trusted computing base, access control mechanisms, distributed system security</p></div>
-          <div class="course reveal"><h4>Info Security Strategies &amp; Policy</h4><p>Risk management, CMMC &amp; regulatory frameworks, international cyber policy</p></div>
-          <div class="course reveal"><h4>Data Privacy &amp; Law</h4><p>Privacy technology, IAPP Privacy by Design, security strategy &amp; policy</p></div>
         </div>
       </div>
     </section>

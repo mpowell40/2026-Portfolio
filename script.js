@@ -13,9 +13,9 @@
   let mouseX = 0, mouseY = 0, parX = 0, parY = 0, scrollY = window.scrollY;
 
   const LAYERS = [
-    { depth: 0.15, size: [0.3, 0.9], speed: 0.03, share: 0.6 },
-    { depth: 0.4, size: [0.6, 1.3], speed: 0.07, share: 0.3 },
-    { depth: 0.9, size: [1.0, 1.9], speed: 0.14, share: 0.1 },
+    { depth: 0.15, size: [0.3, 0.9], speed: 0.22, share: 0.6 },
+    { depth: 0.4, size: [0.6, 1.3], speed: 0.36, share: 0.3 },
+    { depth: 0.9, size: [1.0, 1.9], speed: 0.55, share: 0.1 },
   ];
   const TINTS = ["255,255,255", "255,255,255", "255,255,255", "200,235,255", "220,210,255"];
 
@@ -30,12 +30,15 @@
     LAYERS.forEach((L, li) => {
       const n = Math.round(total * L.share);
       for (let i = 0; i < n; i++) {
+        // random drift direction with a minimum speed so every star visibly wanders
+        const dir = Math.random() * Math.PI * 2;
+        const spd = L.speed * (0.25 + Math.random() * 0.75) * 0.5;
         stars.push({
           x: Math.random() * W,
           y: Math.random() * H,
           r: L.size[0] + Math.random() * (L.size[1] - L.size[0]),
-          vx: (Math.random() - 0.5) * L.speed,
-          vy: (Math.random() - 0.5) * L.speed,
+          vx: Math.cos(dir) * spd,
+          vy: Math.sin(dir) * spd,
           a: 0.25 + Math.random() * 0.75,
           tw: Math.random() * Math.PI * 2,
           tws: 0.005 + Math.random() * 0.025,
