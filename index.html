@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=3" />
 
   <script type="application/ld+json">
   {
@@ -54,7 +54,6 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
       </nav>
       <a href="#contact" class="btn btn--light btn--sm nav__cta">Contact</a>
       <button class="nav__toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -68,7 +67,6 @@
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -78,7 +76,6 @@
     <button data-target="experience" title="Experience"></button>
     <button data-target="projects" title="Projects"></button>
     <button data-target="skills" title="Skills"></button>
-    <button data-target="education" title="Education"></button>
     <button data-target="contact" title="Contact"></button>
   </div>
 
@@ -88,7 +85,7 @@
       <div class="container hero__inner">
         <p class="status reveal-load" style="--d:.05s">
           <span class="pulse" aria-hidden="true"></span>
-          Open to full-time security roles<span class="hide-sm"> &middot; Graduating Dec 2026</span>
+          Open to SOC &amp; detection engineering roles<span class="hide-sm"> &middot; Dec 2026</span>
         </p>
         <h1 class="hero__title reveal-load" style="--d:.15s">
           <span class="serif">I'm</span> <span class="grad">Mekhel Powell</span>
@@ -121,22 +118,34 @@
           <h2 class="h2 reveal">Defending systems by understanding <span class="grad">how they break</span></h2>
           <div class="card reveal">
             <p>
-              I'm a graduate student in Georgia Tech's M.S. Cybersecurity program (Cybersecurity &amp; Privacy track),
-              finishing in December 2026. Before that I earned my B.S. in Computer Science from the Georgia State
-              University Honors College.
+              I focus on <strong>security operations and detection engineering</strong>. My path started with a
+              computer science degree from the Georgia State University Honors College, where learning how networks
+              and systems talk to each other got me hooked on how they get attacked. That led me to Georgia Tech, where
+              I'm finishing my M.S. in Cybersecurity (Cybersecurity &amp; Privacy track) in December 2026.
             </p>
             <p class="muted">
-              My work sits where operations meets engineering: triaging live endpoint alerts in an enterprise SOC,
-              writing MITRE ATT&amp;CK-mapped detections against real attacker traffic, and now researching how to stop
-              AI agents from taking unsafe actions through their tools. I've also spent years teaching computing to
-              high school students, and clear explanation is still a big part of how I work.
+              In practice that means triaging live endpoint alerts in an enterprise SOC, writing MITRE ATT&amp;CK-mapped
+              detection rules against real attacker traffic, and researching how to stop AI agents from taking unsafe
+              actions through their tools. Years of teaching computing to high school students also taught me to
+              document and explain technical findings clearly, which matters every time an alert gets escalated.
             </p>
           </div>
 
-          <div class="stats reveal">
-            <div class="stat"><span class="stat__num" data-count="10" data-suffix="+">0</span><span class="stat__label">Security tools &amp; platforms used hands-on</span></div>
-            <div class="stat"><span class="stat__num" data-count="130" data-suffix="+">0</span><span class="stat__label">Students mentored in STEM &amp; CS</span></div>
-            <div class="stat"><span class="stat__num" data-count="3.71" data-decimals="2">0</span><span class="stat__label">Graduate GPA at Georgia Tech</span></div>
+          <div class="schools reveal">
+            <div class="school">
+              <div class="school__logo"><img src="gt-logo.svg" alt="Georgia Tech logo" width="157" height="69" loading="lazy" /></div>
+              <div class="school__text">
+                <p class="school__deg">M.S. Cybersecurity</p>
+                <p class="school__meta">Georgia Tech &middot; Dec 2026 &middot; <span class="mono">GPA 3.71</span></p>
+              </div>
+            </div>
+            <div class="school">
+              <div class="school__logo"><img src="gsu-logo.svg" alt="Georgia State University logo" width="716" height="584" loading="lazy" /></div>
+              <div class="school__text">
+                <p class="school__deg">B.S. Computer Science, Honors</p>
+                <p class="school__meta">Georgia State &middot; 2025 &middot; <span class="mono">GPA 3.72</span></p>
+              </div>
+            </div>
           </div>
 
           <div class="socials reveal">
@@ -158,6 +167,32 @@
           <div class="photo-frame floating">
             <img src="mekhel-powell.jpg" alt="Mekhel Powell standing outdoors in a plaid shirt" width="800" height="800" loading="lazy" />
           </div>
+          <div class="sticker sticker--gt" title="Georgia Tech"><img src="gt-logo.svg" alt="" width="157" height="69" /></div>
+          <div class="sticker sticker--gsu" title="Georgia State University"><img src="gsu-logo.svg" alt="" width="716" height="584" /></div>
+        </div>
+      </div>
+
+      <!-- What I bring -->
+      <div class="container">
+        <div class="focus">
+          <article class="card focus__card reveal">
+            <span class="focus__num mono">01</span>
+            <h3 class="h4">Security Operations</h3>
+            <p class="muted">Enterprise alert triage in SentinelOne XDR and Red Canary, escalating critical threats for incident response and documenting for compliance.</p>
+            <p class="focus__roles mono">SOC Analyst &middot; Security Analyst</p>
+          </article>
+          <article class="card focus__card reveal">
+            <span class="focus__num mono">02</span>
+            <h3 class="h4">Detection Engineering</h3>
+            <p class="muted">Custom Wazuh SIEM rules mapped to MITRE ATT&amp;CK, built and tested against live attacker telemetry from a cloud honeypot.</p>
+            <p class="focus__roles mono">Detection Engineer &middot; Threat Analyst</p>
+          </article>
+          <article class="card focus__card reveal">
+            <span class="focus__num mono">03</span>
+            <h3 class="h4">Security Research &amp; Automation</h3>
+            <p class="muted">Python security tooling, from an MCP policy-enforcement proxy for AI agents to ML-based phishing detection and workflow automation.</p>
+            <p class="focus__roles mono">Security Engineer &middot; AI Security</p>
+          </article>
         </div>
       </div>
     </section>
@@ -245,6 +280,7 @@
             </div>
             <h3 class="h3 h3--lg">MCProxy: Policy Enforcement Proxy for AI Agent Tool Calls</h3>
             <p class="project__context">Cyber Security Practicum (CS 6727) &middot; Georgia Institute of Technology</p>
+            <p class="fit"><span class="mono">Role fit</span> AI Security &middot; Security Engineering &middot; Research</p>
             <ul class="bullets">
               <li>Designed and built a network-level reverse proxy that intercepts Model Context Protocol (MCP) tool calls between AI agents and tool servers, enforcing security policy before unsafe actions like data exfiltration or unauthorized file and command access can execute.</li>
               <li>Implemented a two-tier enforcement engine in Python that pairs stateless boundary checks with a stateful DFA to detect malicious multi-step tool-call sequences. Building an attack-scenario test suite to measure detection rate, false positives, and latency overhead.</li>
@@ -274,6 +310,7 @@
             </div>
             <h3 class="h3 h3--lg">Cloud Threat Deception &amp; SIEM Telemetry</h3>
             <p class="project__context">Independent Project</p>
+            <p class="fit"><span class="mono">Role fit</span> SOC Analyst &middot; Detection Engineering &middot; Threat Intel</p>
             <ul class="bullets">
               <li>Deployed an AWS EC2 Cowrie SSH honeypot using iptables redirection, streaming 90,000+ JSON threat events over mTLS to a Wazuh SIEM cluster for real-time brute-force and command analysis.</li>
               <li>Wrote custom XML detection rules mapped to MITRE ATT&amp;CK (T1078, T1046), enriched attacker locations through GeoIP pipelines, and audited host posture against CIS Ubuntu Benchmarks.</li>
@@ -297,6 +334,7 @@
             </div>
             <h3 class="h3 h3--lg">ML Phishing Detection System</h3>
             <p class="project__context">Independent Project</p>
+            <p class="fit"><span class="mono">Role fit</span> Detection Engineering &middot; Security Automation</p>
             <ul class="bullets">
               <li>Built an end-to-end phishing detector that analyzes suspicious email and SMS text and embedded URLs at the same time, returning a confidence score and a Safe / Medium / High triage rating.</li>
               <li>Trained two models: a TF-IDF + Logistic Regression text classifier that reached 98.42% accuracy on a 15,023-message validation set, and an XGBoost model for URL features.</li>
@@ -332,78 +370,53 @@
         <div class="card toolkit reveal">
           <div class="toolkit__row">
             <div class="toolkit__label">
-              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
-              <h3>Security &amp; Detection</h3>
+              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+              <h3>SIEM &amp; Log Analysis</h3>
             </div>
-            <div class="tags tags--lg"><span>SentinelOne Singularity XDR</span><span>Red Canary</span><span>Wazuh SIEM</span><span>MITRE ATT&amp;CK</span><span>Wireshark</span><span>Ghidra</span></div>
+            <div class="tags tags--lg"><span>Wazuh SIEM</span><span>Wireshark</span><span>Custom XML detection rules</span><span>GeoIP enrichment</span></div>
+          </div>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon toolkit__icon--violet" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+              <h3>Endpoint Detection &amp; Response</h3>
+            </div>
+            <div class="tags tags--lg"><span>SentinelOne Singularity XDR</span><span>Red Canary</span><span>Alert triage &amp; escalation</span></div>
+          </div>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <h3>Frameworks &amp; Compliance</h3>
+            </div>
+            <div class="tags tags--lg"><span>MITRE ATT&amp;CK</span><span>CIS Benchmarks</span><span>CMMC</span></div>
+          </div>
+          <div class="toolkit__row">
+            <div class="toolkit__label">
+              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+              <h3>Analysis &amp; Reverse Engineering</h3>
+            </div>
+            <div class="tags tags--lg"><span>Ghidra</span><span>Malware &amp; threat analysis</span><span>Fuzzing</span></div>
           </div>
           <div class="toolkit__row">
             <div class="toolkit__label">
               <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19h11.5z"/></svg></span>
               <h3>Cloud &amp; Infrastructure</h3>
             </div>
-            <div class="tags tags--lg"><span>AWS EC2</span><span>Docker</span><span>VMware</span></div>
+            <div class="tags tags--lg"><span>AWS EC2</span><span>Docker</span><span>VMware</span><span>iptables</span><span>mTLS</span></div>
           </div>
           <div class="toolkit__row">
             <div class="toolkit__label">
               <span class="toolkit__icon toolkit__icon--violet" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
-              <h3>Programming &amp; Scripting</h3>
+              <h3>Scripting &amp; Automation</h3>
             </div>
-            <div class="tags tags--lg"><span>Python</span><span>C / C++</span><span>PowerShell</span><span>Java</span><span>React</span></div>
+            <div class="tags tags--lg"><span>Python</span><span>PowerShell</span><span>C / C++</span><span>Java</span><span>React</span><span>Power Automate</span><span>Power BI</span></div>
           </div>
           <div class="toolkit__row">
             <div class="toolkit__label">
-              <span class="toolkit__icon toolkit__icon--blue" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2-3 2M11 12h4"/></svg></span>
+              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2-3 2M11 12h4"/></svg></span>
               <h3>Operating Systems</h3>
             </div>
             <div class="tags tags--lg"><span>Kali Linux</span><span>Ubuntu</span><span>Debian</span><span>Windows Server</span><span>Windows Enterprise</span></div>
           </div>
-          <div class="toolkit__row">
-            <div class="toolkit__label">
-              <span class="toolkit__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
-              <h3>Automation &amp; Reporting</h3>
-            </div>
-            <div class="tags tags--lg"><span>Power BI</span><span>Power Automate</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section">
-      <div class="container">
-        <header class="section__head">
-          <p class="eyebrow reveal">05 &middot; Education</p>
-          <h2 class="h2 reveal">Education &amp; <span class="grad">certifications</span></h2>
-        </header>
-
-        <div class="edu">
-          <article class="card edu-card reveal tilt">
-            <div class="edu-card__logo"><img src="gt-logo.svg" alt="Georgia Tech logo" width="157" height="69" loading="lazy" /></div>
-            <div class="edu-card__body">
-              <span class="date">Expected Dec 2026</span>
-              <h3 class="h3">Georgia Institute of Technology</h3>
-              <p class="org">M.S. Cybersecurity, Cybersecurity &amp; Privacy track</p>
-              <p class="gpa"><span class="mono">GPA</span> 3.71</p>
-            </div>
-          </article>
-          <article class="card edu-card reveal tilt">
-            <div class="edu-card__logo"><img src="gsu-logo.svg" alt="Georgia State University logo" width="716" height="584" loading="lazy" /></div>
-            <div class="edu-card__body">
-              <span class="date">Fall 2021 – Summer 2025</span>
-              <h3 class="h3">Georgia State University</h3>
-              <p class="org">B.S. Computer Science, Honors College</p>
-              <p class="gpa"><span class="mono">GPA</span> 3.72</p>
-            </div>
-          </article>
-          <article class="card edu-card edu-card--cert reveal">
-            <div class="edu-card__body">
-              <span class="date">Expected Jan 2027</span>
-              <h3 class="h3">CompTIA Security+ <span class="cert-code mono">SY0-701</span></h3>
-              <p class="org">Certification in progress</p>
-            </div>
-            <div class="progress" aria-hidden="true"><span></span></div>
-          </article>
         </div>
       </div>
     </section>
@@ -411,7 +424,7 @@
     <!-- Contact -->
     <section id="contact" class="section contact">
       <div class="container contact__inner">
-        <p class="eyebrow reveal">06 &middot; Contact</p>
+        <p class="eyebrow reveal">05 &middot; Contact</p>
         <h2 class="h2 h2--xl reveal">Let's <span class="serif">connect</span></h2>
         <p class="contact__lede reveal">
           I'm looking for full-time roles in security operations, detection engineering, and security research
@@ -440,6 +453,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
