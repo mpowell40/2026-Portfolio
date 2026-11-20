@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
 
   <script type="application/ld+json">
   {
@@ -344,6 +344,7 @@
 
     <!-- Contact -->
     <section id="contact" class="section contact">
+      <div class="glass-rocket" id="glass-rocket" aria-hidden="true"></div>
       <div class="container contact__inner">
         <p class="eyebrow reveal">04 &middot; Contact</p>
         <h2 class="h2 h2--xl reveal">Let's <span class="serif">connect</span></h2>
@@ -375,5 +376,14 @@
   </footer>
 
   <script src="script.js?v=7"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="rocket3d.js?v=6"></script>
 </body>
 </html>
