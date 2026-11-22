@@ -82,12 +82,8 @@
     <!-- Hero -->
     <section id="home" class="hero">
       <div class="container hero__inner">
-        <p class="status reveal-load" style="--d:.05s">
-          <span class="pulse" aria-hidden="true"></span>
-          Open to SOC &amp; detection engineering roles<span class="hide-sm"> &middot; Dec 2026</span>
-        </p>
         <h1 class="hero__title reveal-load" style="--d:.15s">
-          <span class="serif">I'm</span> <span class="grad">Mekhel Powell</span>
+          <span class="grad">Mekhel Powell</span>
         </h1>
         <p class="hero__role reveal-load" style="--d:.3s">
           <span class="mono prompt" aria-hidden="true">&gt;</span>
@@ -149,8 +145,6 @@
           <div class="photo-frame floating">
             <img src="mekhel-powell.jpg" alt="Headshot of Mekhel Powell" width="800" height="800" loading="lazy" />
           </div>
-          <div class="sticker sticker--gt" tabindex="0" role="img" aria-label="Georgia Tech: M.S. Cybersecurity, expected December 2026. Go Jackets!" data-label="Expected Dec 2026 · Go Jackets! 🐝"><img src="gt-buzz.png" alt="" width="365" height="397" /></div>
-          <div class="sticker sticker--gsu" tabindex="0" role="img" aria-label="Georgia State: B.S. Computer Science, graduated 2025. Go Panthers!" data-label="Graduated 2025 · Go Panthers! 🐾"><img src="gsu-panther.png" alt="" width="400" height="327" /></div>
         </div>
       </div>
 
@@ -262,7 +256,6 @@
             </div>
             <h3 class="h3 h3--lg">MCProxy: Policy Enforcement Proxy for AI Agent Tool Calls</h3>
             <p class="project__context">Cyber Security Practicum (CS 6727) &middot; Georgia Institute of Technology</p>
-            <p class="fit"><span class="mono">Role fit</span> AI Security &middot; Security Engineering &middot; Research</p>
             <ul class="bullets">
               <li>Designed and built a network-level reverse proxy that intercepts Model Context Protocol (MCP) tool calls between AI agents and tool servers, enforcing security policy before unsafe actions like data exfiltration or unauthorized file and command access can execute.</li>
               <li>Implemented a two-tier enforcement engine in Python that pairs stateless boundary checks with a stateful DFA to detect malicious multi-step tool-call sequences. Building an attack-scenario test suite to measure detection rate, false positives, and latency overhead.</li>
@@ -292,7 +285,6 @@
             </div>
             <h3 class="h3 h3--lg">Cloud Threat Deception &amp; SIEM Telemetry</h3>
             <p class="project__context">Independent Project</p>
-            <p class="fit"><span class="mono">Role fit</span> SOC Analyst &middot; Detection Engineering &middot; Threat Intel</p>
             <ul class="bullets">
               <li>Deployed an AWS EC2 Cowrie SSH honeypot using iptables redirection, streaming 90,000+ JSON threat events over mTLS to a Wazuh SIEM cluster for real-time brute-force and command analysis.</li>
               <li>Wrote custom XML detection rules mapped to MITRE ATT&amp;CK (T1078, T1046), enriched attacker locations through GeoIP pipelines, and audited host posture against CIS Ubuntu Benchmarks.</li>
@@ -316,7 +308,6 @@
             </div>
             <h3 class="h3 h3--lg">ML Phishing Detection System</h3>
             <p class="project__context">Independent Project</p>
-            <p class="fit"><span class="mono">Role fit</span> Detection Engineering &middot; Security Automation</p>
             <ul class="bullets">
               <li>Built an end-to-end phishing detector that analyzes suspicious email and SMS text and embedded URLs at the same time, returning a confidence score and a Safe / Medium / High triage rating.</li>
               <li>Trained two models: a TF-IDF + Logistic Regression text classifier that reached 98.42% accuracy on a 15,023-message validation set, and an XGBoost model for URL features.</li>
