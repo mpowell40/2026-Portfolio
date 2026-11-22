@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=10" />
 
   <script type="application/ld+json">
   {
@@ -269,9 +269,23 @@
             <a class="link-arrow" href="https://github.com/mpowell40/cowrie-wazuh-honeypot" target="_blank" rel="noopener">View code on GitHub <span aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="project__visual" aria-hidden="true">
-            <div class="terminal">
-              <div class="terminal__bar"><i></i><i></i><i></i><span>wazuh-alerts.log</span></div>
-              <pre class="terminal__body" id="term"></pre>
+            <div class="siem" id="siem">
+              <div class="siem__bar">
+                <i></i><i></i><i></i>
+                <span class="siem__brand">wazuh<b>.</b></span>
+                <span class="siem__crumb">Threat Hunting &rsaquo; honeypot-ec2</span>
+              </div>
+              <div class="siem__kpis">
+                <div><small>Total alerts</small><b id="siem-total">90,412</b></div>
+                <div><small>Level 12+</small><b class="hi" id="siem-high">318</b></div>
+                <div><small>Auth failures</small><b id="siem-fail">71,906</b></div>
+                <div><small>Auth success</small><b class="ok" id="siem-ok">1,204</b></div>
+              </div>
+              <div class="siem__hist" id="siem-hist"></div>
+              <div class="siem__table">
+                <div class="siem__row siem__row--head"><span>Time</span><span>Technique</span><span>Description</span><span>Lvl</span><span>Rule</span></div>
+                <div id="siem-rows"></div>
+              </div>
             </div>
           </div>
         </article>
@@ -343,7 +357,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
   <script type="importmap">
   {
     "imports": {

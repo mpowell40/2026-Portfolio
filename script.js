@@ -267,36 +267,66 @@
   }, { threshold: 0.6 });
   $$("[data-count]").forEach((el) => countObs.observe(el));
 
-  /* ---------- Honeypot terminal feed (illustrative sample lines) ---------- */
-  const term = $("#term");
-  const ips = () => `${(Math.random() * 200 + 20) | 0}.${(Math.random() * 255) | 0}.${(Math.random() * 255) | 0}.${(Math.random() * 255) | 0}`;
-  const users = ["root", "admin", "ubuntu", "oracle", "test", "pi", "postgres"];
-  const cmds = ["uname -a", "cat /proc/cpuinfo", "wget http://…/x.sh", "cd /tmp; chmod +x ./bot", "nproc", "ps aux | grep miner"];
-  const pick = (a) => a[(Math.random() * a.length) | 0];
-  const lineGen = [
-    () => `<span class="t-dim">cowrie</span> login.failed  <span class="t-ok">${ips()}</span>  user=${pick(users)}`,
-    () => `<span class="t-dim">cowrie</span> login.failed  <span class="t-ok">${ips()}</span>  user=${pick(users)}`,
-    () => `<span class="t-dim">cowrie</span> command.input <span class="t-ok">${ips()}</span>  "${pick(cmds)}"`,
-    () => `<span class="t-hi">ALERT</span> rule 1001${(Math.random() * 90 + 10) | 0} brute-force  <span class="t-vi">T1078</span>`,
-    () => `<span class="t-hi">ALERT</span> rule 1002${(Math.random() * 90 + 10) | 0} recon scan   <span class="t-vi">T1046</span>`,
-    () => `<span class="t-dim">geoip</span> enriched src=${ips()} → ${pick(["CN", "RU", "US", "BR", "IN", "VN", "DE", "NL"])}`,
-  ];
-  if (term) {
-    const lines = [];
-    const push = () => {
-      lines.push(pick(lineGen)());
-      if (lines.length > 12) lines.shift();
-      term.innerHTML = lines.join("\n");
+  /* ---------- Wazuh SIEM dashboard feed (illustrative sample alerts) ---------- */
+  const siem = $("#siem");
+  if (siem) {
+    const rowsEl = $("#siem-rows"), histEl = $("#siem-hist");
+    const kpi = { total: $("#siem-total"), high: $("#siem-high"), fail: $("#siem-fail"), ok: $("#siem-ok") };
+    const counts = { total: 90412, high: 318, fail: 71906, ok: 1204 };
+    const pick = (a) => a[(Math.random() * a.length) | 0];
+    const ip = () => `${(Math.random() * 200 + 20) | 0}.${(Math.random() * 255) | 0}.${(Math.random() * 255) | 0}.${(Math.random() * 255) | 0}`;
+    const users = ["root", "admin", "ubuntu", "oracle", "test", "pi", "postgres"];
+    const cmds = ["uname -a", "wget http://…/x.sh", "chmod +x ./bot", "cat /proc/cpuinfo", "nproc"];
+    // [weight, technique, description(), level, rule id, counters to bump]
+    const alerts = [
+      [5, "T1110", () => `Cowrie: SSH login failed for ${pick(users)} from ${ip()}`, 5, "100101", ["fail"]],
+      [2, "T1110", () => `sshd: brute force trying to get access from ${ip()}`, 10, "100110", ["fail"]],
+      [1, "T1078", () => `Cowrie: successful login as ${pick(users)} from ${ip()}`, 12, "100120", ["ok", "high"]],
+      [2, "T1059", () => `Cowrie: command executed "${pick(cmds)}"`, 8, "100130", []],
+      [1, "T1046", () => `Port scan detected from ${ip()}`, 12, "100140", ["high"]],
+    ];
+    const bag = alerts.flatMap((a) => Array(a[0]).fill(a));
+    const fmt = (n) => n.toLocaleString("en-US");
+    const clock = () => new Date().toLocaleTimeString("en-GB", { hour12: false });
+    const level = (l) => (l >= 12 ? "high" : l >= 8 ? "med" : "");
+    const MAX = 6;
+
+    const addRow = (animate) => {
+      const [, tech, desc, lvl, rule, bump] = pick(bag);
+      const row = document.createElement("div");
+      row.className = "siem__row" + (animate ? " new" : "");
+      row.innerHTML = `<span class="t">${clock()}</span><span class="m">${tech}</span><span class="d">${desc()}</span><span class="l ${level(lvl)}">${lvl}</span><span class="r">${rule}</span>`;
+      rowsEl.prepend(row);
+      while (rowsEl.children.length > MAX) rowsEl.lastElementChild.remove();
+      counts.total += 1;
+      bump.forEach((k) => (counts[k] += 1));
+      Object.keys(kpi).forEach((k) => (kpi[k].textContent = fmt(counts[k])));
     };
-    for (let i = 0; i < 12; i++) push();
+
+    const BARS = 28;
+    for (let i = 0; i < BARS; i++) {
+      const b = document.createElement("span");
+      b.style.height = `${20 + Math.random() * 75}%`;
+      histEl.append(b);
+    }
+    const tickHist = () => {
+      histEl.firstElementChild.remove();
+      const b = document.createElement("span");
+      b.style.height = `${20 + Math.random() * 75}%`;
+      histEl.append(b);
+    };
+
+    for (let i = 0; i < MAX; i++) addRow(false);
     if (!reduceMotion) {
-      const termObs = new IntersectionObserver((entries) => {
+      let n = 0;
+      const tick = () => { addRow(true); if (++n % 3 === 0) tickHist(); };
+      const siemObs = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
-          if (en.isIntersecting && !term._iv) term._iv = setInterval(push, 700);
-          else if (!en.isIntersecting && term._iv) { clearInterval(term._iv); term._iv = null; }
+          if (en.isIntersecting && !siem._iv) siem._iv = setInterval(tick, 1100);
+          else if (!en.isIntersecting && siem._iv) { clearInterval(siem._iv); siem._iv = null; }
         });
       });
-      termObs.observe(term);
+      siemObs.observe(siem);
     }
   }
 
