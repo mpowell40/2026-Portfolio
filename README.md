@@ -1,6 +1,6 @@
 # Mekhel Powell, Cybersecurity Portfolio
 
-Personal site for Mekhel Powell, M.S. Cybersecurity candidate at Georgia Tech (Dec 2026).
+Personal site for Mekhel Powell
 
 Live: https://mpowell40.github.io/2026-Portfolio/
 
